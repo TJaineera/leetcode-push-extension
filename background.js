@@ -1,5 +1,4 @@
 
-// background.js (service worker, MV3) — v0.1.1
 async function getSettings() {
   return new Promise((resolve) => {
     chrome.storage.sync.get(
