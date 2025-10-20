@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "LeetCode \u2192 GitHub Pusher",
+  "version": "0.1.1",
+  "description": "Push accepted LeetCode solutions to a GitHub repo with one click.",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://leetcode.com/*",
+    "https://api.github.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://leetcode.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.js"
+      ],
+      "matches": [
+        "https://leetcode.com/*"
+      ]
+    }
+  ],
+  "options_page": "options.html"
+}
